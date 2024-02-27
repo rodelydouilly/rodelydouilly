@@ -104,5 +104,41 @@ print(tableauMots)
 
 
 
+//Dictionnaire
+
+let PersonneesInfos = [
+  "(nom=Pierre, sexe=M, annee_naissance=2010)", 
+  "(nom=Michelle, sexe=F, annee_naissance=2008)",
+  "(nom=Estelle, sexe=F, annee_naissance=2005)",
+  "(nom=Quentin, sexe=M, annee_naissance=2010)",
+  "(nom=Francois, sexe=M, annee_naissance=1980)",
+  "(nom=Cristelle, sexe=F, annee_naissance=1995)" 
+]
+
+// Création d'une liste en utilisant map
+let listePersonne = PersonneesInfos.map { personneInfo -> [String: Any] in
+  var personneDict: [String: Any] = [:]
+
+  let cleanedInfo = personneInfo.replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+  let infos = cleanedInfo.components(separatedBy: ",")
+
+  for info in infos {
+      let components = info.components(separatedBy: "=")
+      if components.count == 2 {
+          let key = components[0].trimmingCharacters(in: .whitespaces)
+          let value = components[1].trimmingCharacters(in: .whitespaces)
+          personneDict[key] = value
+      }
+  }
+
+  return personneDict
+}
+
+// Afficher la liste des personnes
+listePersonne.forEach { personne in
+  print(personne)
+}
 
 
+//Afficher les noms de toutes les personnes majeurs
+let personneesInfos 
