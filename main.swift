@@ -50,7 +50,7 @@ for index in 0..<tableauMots.count where index % 2 == 0
 
 }
 
-//5.-Trouvez et affichez les mots aux indices impairs
+//Trouvez et affichez les mots aux indices impairs
 
 print("**voici les mots aux indices impairs**")
 
